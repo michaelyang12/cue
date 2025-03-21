@@ -5,7 +5,7 @@
 //  Created by Michael Yang on 3/20/25.
 //
 import Foundation
-
+//NO LONGER NEEDED
 class OllamaService {
     static let shared = OllamaService()
     
@@ -13,9 +13,6 @@ class OllamaService {
         let task = Process()
         let ollamaPath = "/usr/local/bin/ollama"
         task.executableURL = URL(fileURLWithPath: "/bin/zsh")
-        /*task.executableURL = URL(fileURLWithPath: "/usr/local/bin/ollama") */ // Adjust the path to your ollama installation
-        //echo "What is water made of?" | ollama run <model>
-
         task.arguments = ["-c", "echo \(prompt) | \(ollamaPath) run gemma3:4b"]
         
         let pipe = Pipe()
@@ -26,7 +23,6 @@ class OllamaService {
             try task.run()
             let data = pipe.fileHandleForReading.readDataToEndOfFile()
             if let output = String(data: data, encoding: .utf8) {
-                print("Ollama output: \(output)")
                 return output
             }
             return "No response from Ollama"
