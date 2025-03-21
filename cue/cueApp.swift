@@ -6,12 +6,20 @@
 //
 
 import SwiftUI
+import Cocoa
 
 @main
 struct cueApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        Settings {
+            EmptyView()
         }
     }
 }
+
+
+// Info.plist additions:
+// <key>LSUIElement</key>
+// <true/>
